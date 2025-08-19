@@ -444,6 +444,9 @@ nav.scrolled .navbar-brand img {
   border-right: 1px solid #96722C80;
   padding-top: 10px;
 }
+.award-content p{
+  color: #96722C;
+}
 
 .swiper-slide:last-child .award-content {
   border-right: none;
