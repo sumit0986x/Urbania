@@ -910,7 +910,7 @@ height: 40px;
   height: 1px;
   background: #96722c;
   z-index: 1;
-  width: 100vw;
+ right: calc(50% - 50vw);
 }
 
 .testimonials-num {
