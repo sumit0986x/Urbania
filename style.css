@@ -121,9 +121,9 @@ a {
 
 
 /* --------------------------------------------Header-------------------------------------------------------- */
-.btn1 {
+/* .btn1 {
   position: relative;
-  padding: 10px 25px;
+  padding: 10px 30px;
   border-radius: 25px;
   border: 1px solid #96722c;
   color: #96722c;
@@ -147,7 +147,55 @@ a {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+} */
+.btn1 {
+  position: relative;
+  padding: 10px 30px;
+  border-radius: 25px;
+  border: 1px solid #96722c;
+  color: #96722c;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+  /* overflow: hidden; */
 }
+
+/* Circle arrow in its normal (right) place */
+.btn1::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -25px; /* same as your original */
+  transform: translateY(-50%); /* default state */
+  background-image: url("./Assets/Icons/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  background-color: #96722c;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.6s ease; /* animate movement */
+}
+
+/* On hover, move from left -> right */
+.btn1:hover::before {
+  transform: translate(-150%, -50%); /* start far left */
+  animation: slideArrow 2s ease forwards;
+}
+
+/* keyframes for smooth left-to-right */
+@keyframes slideArrow {
+  from {
+    transform: translate(-350%, -50%); /* way left */
+  }
+  to {
+    transform: translate(0, -50%); /* normal position */
+  }
+}
+
+
 
 .bg {
   width: 200px;
@@ -650,25 +698,30 @@ height: 40px;
 
 }
 
-.blog-prev, .blog-next {
+.blog-next img, .blog-prev img {
+  width: 40px;
+  height: 40px;
+}
+
+/* .blog-prev, .blog-next {
   border: none;
   background: transparent;
   border-radius: 0%;
   transition: all 0.3s ease;
   cursor: pointer;
-}
+} */
 
 /* Change border-radius and SVG color on active state */
-.blog-prev.active, .blog-next.active {
+/* .blog-prev.active, .blog-next.active {
   border-radius: 50%;
   border: 1px solid #96722C;
   padding: 3px;
-}
+} */
 
 .blog-prev svg,.blog-next svg {
   /* width: 20px;
   height: 20px; */
-  padding: 5px;
+  /* padding: 5px; */
 
 }
 
@@ -682,7 +735,6 @@ height: 40px;
 .blog-next.active svg path {
   fill: #96722C; /* change to your highlight color */
 }
-
 
 
 
@@ -765,3 +817,170 @@ height: 40px;
 }
 
 
+/* --------------------------------------------------------------- */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tab-link{
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  /* padding: 10px 20px; */
+  transition: all 0.3s ease;
+}
+
+.tab-link h3{
+  color: #888;
+}
+@media (max-width:576px) {
+
+.tab-link h3{
+  font-size: 20px;
+}  
+}
+
+.tab-link.active h3{
+  color: #000;
+  /* font-weight: bold; */
+  /* border-bottom: 2px solid #96722C; */
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+/* ------------------------------------------------------------------- */
+.testimonials {
+  background: url("./Assets/Image/Frame\ 11.png");
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-position: center;
+  background-color: #fcf4e6;
+}
+.testimonials-img img{
+  border: 1px solid #96722c;
+  border-radius: 50%;
+  padding: 40px;
+  width: 80%;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  position: relative;
+  
+  z-index: 2; 
+
+}
+
+
+
+
+/* Left line */
+.testimonials-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  /* left: 0; */
+  right: 50%; /* stops at center of image */
+  height: 1px;
+  background: #96722c;
+  z-index: 1;
+  width: 100%;
+}
+
+/* Right line */
+.testimonials-img::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 40%; /* starts from center of image */
+  /* right: 0; */
+  height: 1px;
+  background: #96722c;
+  z-index: 1;
+  width: 100vw;
+}
+
+.testimonials-num {
+  position: absolute;
+  content: "";
+  bottom: -45px !important;
+}
+
+.testimonials-card h4{
+  color: #96722c;
+}
+
+.testimonials-card h2{
+font-weight: 400;
+}
+
+.testimonials-card p{
+  font-size: 20px;
+}
+.testimonials-card span {
+  font-size: 15px;
+}
+.testimonials-card h5{
+  color: #333;
+}
+
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* spacing between circles */
+  position: relative;
+  margin-top: 30px;
+}
+
+/* .swiper-pagination::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #d3c2a1; 
+  z-index: 0;
+} */
+
+.swiper-pagination-bullet {
+  position: relative;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  background: #f9f3e9;
+  border: 2px solid #d3c2a1;
+  border-radius: 50%;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  /* background: #fff; */
+  color: #a38343;
+  border: 2px solid #a38343;
+  transform: scale(1.2); /* make active bigger */
+  font-weight: bold;
+}

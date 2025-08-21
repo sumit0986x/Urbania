@@ -82,8 +82,8 @@ const awardSwiper = new Swiper(".awardSwiper", {
   },
   loop: true,
   navigation: {
-    nextEl: ".custom-next",
-    prevEl: ".custom-prev",
+    nextEl: ".award-next",
+    prevEl: ".award-prev",
   },
   breakpoints: {
     0: { slidesPerView: 1 },
@@ -94,19 +94,30 @@ const awardSwiper = new Swiper(".awardSwiper", {
 
 const completeSwiper = new Swiper(".completeSwiper", {
   slidesPerView: 1,
-  // spaceBetween: 24,
-  //   autoplay: {
-  //   delay: 3000,
-  //   disableOnInteraction: false,
-  // },
   loop: true,
   navigation: {
-    nextEl: ".custom-next",
-    prevEl: ".custom-prev",
+    nextEl: ".complete-next",
+    prevEl: ".complete-prev",
   },
-
 });
 
+const upcomingSwiper = new Swiper(".upcomingSwiper", {
+  slidesPerView: 1,
+  loop: true,
+  navigation: {
+    nextEl: ".upcoming-next",
+    prevEl: ".upcoming-prev",
+  },
+});
+
+const ongoingSwiper = new Swiper(".ongoingSwiper", {
+  slidesPerView: 1,
+  loop: true,
+  navigation: {
+    nextEl: ".ongoing-next",
+    prevEl: ".ongoing-prev",
+  },
+});
 
 
   // const prevBtn = document.querySelector('.blog-prev');
@@ -193,4 +204,41 @@ const completeSwiper = new Swiper(".completeSwiper", {
 
       observer.observe(counter);
     });
+  });
+
+
+
+
+
+  document.querySelectorAll(".tab-link").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".tab-link").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+    document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+    document.getElementById(button.dataset.tab).classList.add("active");
+  });
+});
+
+
+  // const swiper = new Swiper('.swiper', {
+  //   loop: false,
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     clickable: true,
+  //     renderBullet: function (index, className) {
+  //       return '<span class="' + className + '">' + ('0' + (index + 1)) + '</span>';
+  //     }
+  //   }
+  // });
+
+    var testimonialSwiper = new Swiper(".testimonialSwiper", {
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        let number = (index + 1).toString().padStart(2, "0"); // 01, 02, 03
+        return '<span class="' + className + '">' + number + "</span>";
+      },
+    },
   });
